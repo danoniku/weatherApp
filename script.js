@@ -58,11 +58,10 @@ async function checkWeather(city) {
 
 async function getInitialWeather(lat, long) {
     const response = await fetch(
-        "https://api.openweathermap.org/data/2.5/weather?lat={" +
+        "https://api.openweathermap.org/data/2.5/weather?lat=" +
             lat +
-            "}&lon={" +
+            "&lon=" +
             long +
-            "}" +
             `&appid=${apiKey}`
     );
 
@@ -75,7 +74,7 @@ async function getInitialWeather(lat, long) {
 
         document.querySelector(".city").innerHTML = data.name;
         document.querySelector(".temperature").innerHTML =
-            Math.round(data.main.temp) + "°C";
+            Math.round(data.main.temp - 273) + "°C"; //kelvin
         document.querySelector(".humidity").innerHTML =
             data.main.humidity + "%";
         document.querySelector(".wind").innerHTML = data.wind.speed + "km/h";
@@ -104,16 +103,18 @@ searchButton.addEventListener("click", () => {
 
 const toggle = document.getElementById("toggleDark");
 const body = document.querySelector("body");
-
+const card = document.getElementById("card");
+console.log(card);
 toggle.addEventListener("click", function () {
     this.classList.toggle("bi-moon");
+    card.classList.toggle("card-blue-gradient");
     if (this.classList.toggle("bi-brightness-high-fill")) {
-        body.style.background = "white";
-        body.style.color = "black";
-        body.style.transition = "2s";
-    } else {
         body.style.background = "black";
         body.style.color = "white";
+        body.style.transition = "2s";
+    } else {
+        body.style.background = "white";
+        body.style.color = "black";
         body.style.transition = "2s";
     }
 });

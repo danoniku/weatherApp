@@ -17,6 +17,9 @@ body {
     padding: 40px 20px;
     text-align: center;
 }
+.card-blue-gradient {
+    background: linear-gradient(#6926dc, #c316a3);
+}
 .search-bar input {
     border: 0;
     outline: 0;
