@@ -5,10 +5,12 @@
     box-sizing: border-box;
 }
 body {
-    background: #f5f5dc;
+    background-size: cover;
+
+    background-repeat: no-repeat;
 }
 .card {
-    width: 100%;
+    width: 50%;
     max-width: 80%;
     background: linear-gradient(#e66465, #9198e5);
     color: #000000;
@@ -38,7 +40,7 @@ body {
     background: #ececec;
     border-radius: 50%;
     width: 40px;
-    height: 45px;
+    height: 40px;
     cursor: pointer;
 }
 .weather-icon {
@@ -67,13 +69,13 @@ body {
     text-align: left;
 }
 .col img {
-    width: 40px;
-    margin-right: 10px;
+    width: 60px;
+    margin-right: 20px;
 }
 .humidity,
 .wind {
-    font-size: 30px;
-    margin-top: -5px;
+    font-size: 40px;
+    margin-top: -10px;
 }
 
 .weather {
@@ -91,6 +93,11 @@ i {
     cursor: pointer;
     position: absolute;
     top: 13%;
-    left: 80%;
+    left: 70%;
     transform: translate(-25%, -45%);
+}
+.date {
+    font-size: 20px;
+    text-align: center;
+    margin-top: 5px;
 }

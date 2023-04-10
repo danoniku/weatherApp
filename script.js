@@ -1,12 +1,34 @@
 const apiKey = "920f4407688f95c37a001112dac724e1";
 const apiUrl =
     "https://api.openweathermap.org/data/2.5/weather?units=metric&q=";
+const body = document.querySelector("body");
+const card = document.getElementById("card");
 
 const searchBox = document.querySelector(".search-bar input");
 const searchButton = document.querySelector(".search-bar button");
 const weatherIcon = document.querySelector(".weather-icon");
 let latitude;
 let longitude;
+
+var today = new Date();
+var date =
+    today.getFullYear() + "-" + (today.getMonth() + 1) + "-" + today.getDate();
+var time =
+    today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+var dateTime = date + " " + time;
+
+document.querySelector(".getDate").innerHTML = dateTime;
+console.log(today.getHours());
+if (today.getHours() >= 20 && today.getHours() <= 8) {
+    document.body.style.backgroundImage = "url('img/night1.png')";
+    // body.style.color = "white";
+    body.style.transition = "1s";
+    card.classList.toggle("card-blue-gradient");
+} else {
+    document.body.style.backgroundImage = "url('img/day.png')";
+    // body.style.color = "black";
+    body.style.transition = "1s";
+}
 
 const successCallback = (position) => {
     console.log(position.coords);
@@ -102,19 +124,20 @@ searchButton.addEventListener("click", () => {
 });
 
 const toggle = document.getElementById("toggleDark");
-const body = document.querySelector("body");
-const card = document.getElementById("card");
+
 console.log(card);
 toggle.addEventListener("click", function () {
     this.classList.toggle("bi-moon");
     card.classList.toggle("card-blue-gradient");
     if (this.classList.toggle("bi-brightness-high-fill")) {
-        body.style.background = "black";
-        body.style.color = "white";
-        body.style.transition = "2s";
+        document.body.style.backgroundImage = "url('img/night1.png')";
+        //body.style.color = "white";
+        // body.style.color = "white";
+        body.style.transition = "1.5s";
     } else {
-        body.style.background = "white";
-        body.style.color = "black";
-        body.style.transition = "2s";
+        // body.style.color = "black";
+        document.body.style.backgroundImage = "url('img/day.png')";
+
+        body.style.transition = "1.5s";
     }
 });
