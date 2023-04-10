@@ -10,7 +10,7 @@ const weatherIcon = document.querySelector(".weather-icon");
 let latitude;
 let longitude;
 
-var today = new Date();
+var today = new Date(); //date
 var date =
     today.getFullYear() + "-" + (today.getMonth() + 1) + "-" + today.getDate();
 var time =
@@ -19,14 +19,14 @@ var dateTime = date + " " + time;
 
 document.querySelector(".getDate").innerHTML = dateTime;
 console.log(today.getHours());
+
 if (today.getHours() >= 20 && today.getHours() <= 8) {
+    //tema by default in functie de ora curenta
     document.body.style.backgroundImage = "url('img/night1.png')";
-    // body.style.color = "white";
     body.style.transition = "1s";
     card.classList.toggle("card-blue-gradient");
 } else {
     document.body.style.backgroundImage = "url('img/day.png')";
-    // body.style.color = "black";
     body.style.transition = "1s";
 }
 
@@ -35,7 +35,7 @@ const successCallback = (position) => {
     latitude = position.coords.latitude;
     longitude = position.coords.longitude;
     console.log(longitude, latitude);
-    getInitialWeather(latitude, longitude);
+    getInitialWeather(latitude, longitude); //initial weather in functie de lat si lot de pe API
 };
 
 const errorCallback = (error) => {
@@ -45,6 +45,7 @@ const errorCallback = (error) => {
 navigator.geolocation.getCurrentPosition(successCallback, errorCallback); //functie principala locatie
 
 async function checkWeather(city) {
+    //in functie de oras
     const response = await fetch(apiUrl + city + `&appid=${apiKey}`);
 
     if (response.status == 404) {
@@ -130,6 +131,7 @@ toggle.addEventListener("click", function () {
     this.classList.toggle("bi-moon");
     card.classList.toggle("card-blue-gradient");
     if (this.classList.toggle("bi-brightness-high-fill")) {
+        //schimbare background
         document.body.style.backgroundImage = "url('img/night1.png')";
         //body.style.color = "white";
         // body.style.color = "white";
